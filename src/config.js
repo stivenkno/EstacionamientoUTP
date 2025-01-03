@@ -1,6 +1,8 @@
 import pkg from "pg";
 const { Pool } = pkg;
 
+import query from "./db.js";
+
 import VAR_ENTORNO from "../exportsenv.js";
 
 const DB_URL = VAR_ENTORNO.DB_URL;
@@ -27,5 +29,16 @@ const pool = new Pool({
     console.error("Error al conectar a PostgreSQL:", err);
   }
 })();
+
+const createTables = async () => {
+  try {
+    await pool.query(query);
+    console.log("Initial tables created.");
+  } catch (err) {
+    console.error("Error creating table:", err);
+  }
+};
+
+createTables();
 
 export default pool;

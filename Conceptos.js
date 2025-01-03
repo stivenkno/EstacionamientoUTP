@@ -126,3 +126,9 @@ Nota: pg no soporta completamente ESMODULES
 })();
 
 */
+
+/*
+Explicacion para mi:
+
+Los controladores son los que manejan las peticiones y toda la logica, luego este se la pasa a las rutas, y luego al servidor.
+*/
