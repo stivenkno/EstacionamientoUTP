@@ -10,9 +10,7 @@ const DB_URL = VAR_ENTORNO.DB_URL;
 //Conexion a la base de datos
 const pool = new Pool({
   connectionString: DB_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl: true,
 });
 
 (async () => {
