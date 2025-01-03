@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import pool from "../config.js";
 
 const register = async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password } = req.body; //Desestructuramos de req.body el username, email y password
 
   try {
     // Verificar si el usuario ya existe

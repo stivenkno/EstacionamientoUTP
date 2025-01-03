@@ -131,4 +131,10 @@ Nota: pg no soporta completamente ESMODULES
 Explicacion para mi:
 
 Los controladores son los que manejan las peticiones y toda la logica, luego este se la pasa a las rutas, y luego al servidor.
+
+
+Nos podemos conectar a pg admin Local desde render, con las credenciales que este nos proporciona:
+
+-La url externa se puede utilizar desde prg... etc
+-Tambien es posible agregar nuestra IP a render
 */
