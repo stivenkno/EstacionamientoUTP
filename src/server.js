@@ -1,10 +1,20 @@
 import express from "express";
 import VAR_ENTORNO from "../exportsenv.js";
+import cors from "cors";
+import pool from "./config.js";
 
-const app = express();
 const PORT = VAR_ENTORNO.PORT;
+const DB_URL = VAR_ENTORNO.DB_URL;
+
+//Crea una instancia de express para el servidor
+const app = express();
 
 app.use(express.json());
+app.use(cors());
+
+if (pool) {
+  console.log("Base de datos funcionando en servidor");
+}
 
 app.get("/", (req, res) => {
   res.send("Hello World");

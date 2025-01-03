@@ -87,3 +87,42 @@ Restricciones Técnicas:
 
 
 */
+
+/*
+
+PASOS PARA CONECTARSE A UNA BASE DE DATOS USANDO POSTGRESQL EN RENDER:
+
+1. Crear una base de datos en PostgreSQL en Render.
+2. Obtener la URL de la base de datos en Render.
+3. Configurar la URL de la base de datos en el archivo .env de tu proyecto.
+
+-Se crea en el archivo .env la variable de entorno con la URL de la base de datos
+-Se realiza la conexion con la base de datos, como esta desplegada en render requiere ssl
+const pool = new Pool({
+  connectionString: DB_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
+
+Nota: pg no soporta completamente ESMODULES
+
+-Prueba de conexion a la base de datos
+
+// Función para probar la conexión
+(async () => {
+  try {
+    const client = await pool.connect();
+    console.log("Conexión exitosa a PostgreSQL");
+
+    // Realizar una consulta de prueba
+    const res = await client.query("SELECT NOW() AS current_time");
+    console.log("Hora actual en la base de datos:", res.rows[0].current_time);
+
+    client.release(); // Liberar el cliente
+  } catch (err) {
+    console.error("Error al conectar a PostgreSQL:", err);
+  }
+})();
+
+*/
