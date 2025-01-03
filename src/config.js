@@ -15,20 +15,10 @@ const pool = new Pool({
   },
 });
 
-(async () => {
-  try {
-    const client = await pool.connect();
-    console.log("Conexión exitosa a PostgreSQL");
-
-    // Realizar una consulta de prueba
-    const res = await client.query("SELECT NOW() AS current_time");
-    console.log("Hora actual en la base de datos:", res.rows[0].current_time);
-
-    client.release(); // Liberar el cliente
-  } catch (err) {
-    console.error("Error al conectar a PostgreSQL:", err);
-  }
-})();
+pool.query("SELECT NOW()", (err, res) => {
+  if (err) throw err;
+  console.log(`Connected to the database at ${res.rows[0].now}`);
+});
 
 const createTables = async () => {
   try {
