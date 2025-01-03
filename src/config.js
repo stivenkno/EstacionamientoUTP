@@ -12,7 +12,8 @@ const DB_URL = VAR_ENTORNO.DB_URL;
 
 //Conexion a la base de datos
 const pool = new Pool({
-  connectionString: process.env.DB_URL || DB_URL,
+  connectionString:
+    "postgresql://dbkanban_user:FfmwxDFWY8BumVerhmf8vubEeleCOnxX@dpg-ctrecjt2ng1s739eoigg-a/dbkanban",
   ssl: {
     rejectUnauthorized: false,
   },
