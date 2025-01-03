@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 if (pool) {
-  console.log("Base de datos funcionando en servidorr");
+  console.log("Base de datos funcionando en servidorrr");
 }
 
 app.use("/api", authrouter);
