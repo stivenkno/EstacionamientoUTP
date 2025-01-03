@@ -11,7 +11,13 @@ const DB_URL = VAR_ENTORNO.DB_URL;
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 if (pool) {
   console.log("Base de datos funcionando en servidorrr");
