@@ -19,7 +19,7 @@ const register = async (req, res) => {
 
     // Insertar nuevo usuario
     const newUser = await pool.query(
-      "INSERT INTO users (username, email, password_hash) VALUES ($1, $2, $3) RETURNING id, username, email",
+      "INSERT INTO users (username, email, password_hash) VALUES ($1, $2, $3) RETURNING user_id, username, email",
       [username, email, hashedPassword]
     );
 
@@ -45,7 +45,7 @@ const login = async (req, res) => {
     }
 
     const user = result.rows[0];
-
+    console.log(user);
     // Verificar la contraseña
     const isMatch = await bcrypt.compare(password, user.password_hash);
     if (!isMatch) {
@@ -53,7 +53,7 @@ const login = async (req, res) => {
     }
 
     // Crear token JWT
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ user_id: user.user_id }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPIRATION,
     });
 

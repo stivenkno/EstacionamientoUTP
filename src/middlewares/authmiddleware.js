@@ -20,7 +20,8 @@ const authMiddleware = (req, res, next) => {
     // Verificar el token con la clave secreta
     const decoded = jwt.verify(tokenValue, process.env.JWT_SECRET);
     // Adjuntar el usuario al request
-    req.body.user = decoded;
+    req.user = decoded;
+    console.log(req.user);
     next(); // Continuar con la siguiente función
   } catch (error) {
     res.status(400).json({ message: "Token inválido." });

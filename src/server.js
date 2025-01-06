@@ -4,6 +4,7 @@ import cors from "cors";
 import pool from "./config.js";
 import authrouter from "./routes/authroutes.js";
 import authMiddleware from "./middlewares/authmiddleware.js";
+import columnrouter from "./routes/columnsroutes.js";
 
 const PORT = VAR_ENTORNO.PORT;
 const DB_URL = VAR_ENTORNO.DB_URL;
@@ -25,6 +26,7 @@ if (pool) {
 }
 
 app.use("/api", authrouter);
+app.use("/api", authMiddleware, columnrouter);
 
 app.get("/", authMiddleware, (req, res) => {
   res.send("Hello World!");
