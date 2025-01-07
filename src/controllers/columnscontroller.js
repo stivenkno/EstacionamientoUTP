@@ -4,7 +4,7 @@ const readColumn = async (req, res) => {
   try {
     const result = await pool.query(
       "SELECT * FROM columns WHERE user_id = $1 ORDER BY position",
-      [req.user.id]
+      [req.user.user_id]
     );
     res.json(result.rows);
   } catch (err) {

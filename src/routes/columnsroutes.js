@@ -10,8 +10,8 @@ import {
 const columnrouter = express.Router();
 
 columnrouter.post("/columns", createColumn);
-columnrouter.put("columns/:id", updateColumn);
-columnrouter.delete("columns/:id", deleteColumn);
-columnrouter.get("columns/", readColumn);
+columnrouter.put("/columns/:id", updateColumn);
+columnrouter.delete("/columns/:id", deleteColumn);
+columnrouter.get("/columns", readColumn);
 
 export default columnrouter;
