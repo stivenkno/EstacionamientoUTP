@@ -2,7 +2,10 @@ import pool from "../config.js";
 
 const getColumns = async (req, res) => {
   try {
-    const response = await pool.query("SELECT * FROM positioncolumns");
+    const response = await pool.query(
+      "SELECT * FROM positioncolumns WHERE user_id = $1",
+      [req.user.user_id]
+    );
     res.json(response.rows);
   } catch (error) {
     console.error("Error al obtener las columnas:", error);
@@ -15,7 +18,9 @@ const updateColumnPosition = async (req, res) => {
 
   try {
     // Eliminar todos los datos de la tabla
-    await pool.query("DELETE FROM positioncolumns");
+    await pool.query("DELETE FROM positioncolumns WHERE user_id = $1", [
+      req.user.user_id,
+    ]);
 
     // Reiniciar la secuencia del ID para que vuelva a empezar desde 1
     await pool.query(
