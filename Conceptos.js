@@ -138,3 +138,6 @@ Nos podemos conectar a pg admin Local desde render, con las credenciales que est
 -La url externa se puede utilizar desde prg... etc
 -Tambien es posible agregar nuestra IP a render
 */
+/*
+
+*/

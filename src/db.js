@@ -27,6 +27,9 @@ CREATE TABLE IF NOT EXISTS tasks (
     user_id INT REFERENCES users(user_id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS positionColumns (
+    position SERIAL PRIMARY KEY,
+    column_id INT REFERENCES columns(column_id) ON DELETE CASCADE);
     `;
 
 export default query;
