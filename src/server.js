@@ -6,6 +6,7 @@ import authrouter from "./routes/authroutes.js";
 import authMiddleware from "./middlewares/authmiddleware.js";
 import columnrouter from "./routes/columnsroutes.js";
 import taskrouter from "./routes/tasksroutes.js";
+import positionColumnrouter from "./routes/positionColumnsroutes.js";
 
 const PORT = VAR_ENTORNO.PORT;
 const DB_URL = VAR_ENTORNO.DB_URL;
@@ -34,6 +35,9 @@ app.use("/api", authMiddleware, columnrouter);
 
 //ruta para las tasks
 app.use("/api", authMiddleware, taskrouter);
+
+//ruta para actualizar orden columnas
+app.use("/api", authMiddleware, positionColumnrouter);
 
 app.get("/", authMiddleware, (req, res) => {
   res.send("Hello World!");
