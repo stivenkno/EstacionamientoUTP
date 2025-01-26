@@ -104,10 +104,11 @@ const updateColumn = async (req, res) => {
 };
 
 const deleteColumn = async (req, res) => {
+  const { column_id } = req.body;
   try {
     await pool.query(
       "DELETE FROM columns WHERE column_id = $1 AND user_id = $2",
-      [req.params.id, req.user.id]
+      [column_id, req.user.user_id]
     );
     res.send("Columna eliminada");
   } catch (err) {

@@ -44,7 +44,7 @@ const updateTask = async (req, res) => {
 const deleteTask = async (req, res) => {
   try {
     await pool.query("DELETE FROM tasks WHERE id = $1 AND user_id = $2", [
-      req.params.id,
+      req.body.id,
       req.user.user_id,
     ]);
     res.send("Tarea eliminada");
