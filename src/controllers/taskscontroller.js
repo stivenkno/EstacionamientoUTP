@@ -7,7 +7,13 @@ const createTask = async (req, res) => {
       "INSERT INTO tasks (title, description, position, column_id, user_id) VALUES ($1, $2, $3, $4, $5)",
       [title, description, position, column_id, req.user.user_id]
     );
-    res.send("Tarea creada");
+    res.send({
+      title: title,
+      description: description,
+      position: position,
+      column_id: column_id,
+      user_id: req.user.user_id,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: err });
