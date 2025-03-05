@@ -9,28 +9,5 @@ const query = `
 );
 
 
--- Crear la tabla de columnas si no existe
-CREATE TABLE IF NOT EXISTS columns (
-    column_id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    position INT NOT NULL,
-    user_id INT REFERENCES users(user_id) ON DELETE CASCADE
-);
-
--- Crear la tabla de tareas si no existe
-CREATE TABLE IF NOT EXISTS tasks (
-    task_id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    description TEXT,
-    position INT NOT NULL,
-    column_id INT REFERENCES columns(column_id) ON DELETE CASCADE,
-    user_id INT REFERENCES users(user_id) ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS positionColumns (
-    id SERIAL,
-    user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
-    column_id INT REFERENCES columns(column_id) ON DELETE CASCADE);
-    `;
-
+      `;
 export default query;

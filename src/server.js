@@ -4,9 +4,6 @@ import cors from "cors";
 import pool from "./config.js";
 import authrouter from "./routes/authroutes.js";
 import authMiddleware from "./middlewares/authmiddleware.js";
-import columnrouter from "./routes/columnsroutes.js";
-import taskrouter from "./routes/tasksroutes.js";
-import positionColumnrouter from "./routes/positionColumnsroutes.js";
 import profilerouter from "./routes/profileroutes.js";
 
 const PORT = VAR_ENTORNO.PORT;
@@ -33,15 +30,6 @@ app.use("/api", authrouter);
 
 //ruta para el perfil
 app.use("/api", authMiddleware, profilerouter);
-
-//ruta para las columnas
-app.use("/api", authMiddleware, columnrouter);
-
-//ruta para las tasks
-app.use("/api", authMiddleware, taskrouter);
-
-//ruta para actualizar orden columnas
-app.use("/api", authMiddleware, positionColumnrouter);
 
 app.get("/", authMiddleware, (req, res) => {
   res.send("Hello World!");

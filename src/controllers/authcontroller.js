@@ -5,6 +5,12 @@ import pool from "../config.js";
 const register = async (req, res) => {
   const { username, email, password } = req.body; //Desestructuramos de req.body el username, email y password
 
+  if (email.includes("@utp.edu.co")) {
+    console.log("sapahpta");
+  } else {
+    console.log("assasasasa");
+  }
+
   try {
     // Verificar si el usuario ya existe
     const result = await pool.query("SELECT * FROM users WHERE email = $1", [
