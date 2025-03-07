@@ -5,6 +5,7 @@ import pool from "./config.js";
 import authrouter from "./routes/authroutes.js";
 import authMiddleware from "./middlewares/authmiddleware.js";
 import profilerouter from "./routes/profileroutes.js";
+import parkrouter from "./routes/parkroutes.js";
 
 const PORT = VAR_ENTORNO.PORT;
 const DB_URL = VAR_ENTORNO.DB_URL;
@@ -30,6 +31,9 @@ app.use("/api", authrouter);
 
 //ruta para el perfil
 app.use("/api", authMiddleware, profilerouter);
+
+//ruta para el home
+app.use("/api", authMiddleware, parkrouter);
 
 app.get("/", authMiddleware, (req, res) => {
   res.send("Hello World!");
