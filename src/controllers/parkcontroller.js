@@ -2,10 +2,18 @@ import pool from "../config.js";
 
 export const getParks = async (req, res) => {
   try {
-    const response1 = await pool.query("SELECT * FROM parkuno");
-    const response2 = await pool.query("SELECT * FROM parkdos");
-    const response3 = await pool.query("SELECT * FROM parktres");
-    const response4 = await pool.query("SELECT * FROM parkcuatro");
+    const response1 = await pool.query(
+      "SELECT * FROM parkuno WHERE estado = 'libre' ORDER BY id_park_1 ASC"
+    );
+    const response2 = await pool.query(
+      "SELECT * FROM parkdos WHERE estado = 'libre' ORDER BY id_park_2 ASC"
+    );
+    const response3 = await pool.query(
+      "SELECT * FROM parktres WHERE estado = 'libre' ORDER BY id_park_3 ASC"
+    );
+    const response4 = await pool.query(
+      "SELECT * FROM parkcuatro WHERE estado = 'libre' ORDER BY id_park_4 ASC"
+    );
 
     res.json({
       parkuno: response1.rows,
