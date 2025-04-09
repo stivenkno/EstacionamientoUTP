@@ -7,6 +7,7 @@ const query = `
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
           updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
+      
 
       CREATE TABLE IF NOT EXISTS parkuno (
           id_park_1 SERIAL PRIMARY KEY,
